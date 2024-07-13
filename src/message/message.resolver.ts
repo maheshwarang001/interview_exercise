@@ -128,8 +128,11 @@ export class MessageResolver {
   async likeConversationMessage(
     @Args('likeMessageDto') likeMessageDto: LikeMessageDto,
     @AuthenticatedUser() authenticatedUser: IAuthenticatedUser,
-  ): Promise<ChatMessage> {
-    await this.messageLogic.like(likeMessageDto, authenticatedUser);
+  ) {
+    /**
+     * The function messageLogic.like returns void
+     */
+    return await this.messageLogic.like(likeMessageDto, authenticatedUser);
   }
 
   @Mutation(() => ChatMessage)
@@ -137,7 +140,7 @@ export class MessageResolver {
   async unlikeConversationMessage(
     @Args('likeMessageDto') likeMessageDto: LikeMessageDto,
     @AuthenticatedUser() authenticatedUser: IAuthenticatedUser,
-  ): Promise<ChatMessage> {
+  ){
     return await this.messageLogic.unlike(likeMessageDto, authenticatedUser);
   }
 

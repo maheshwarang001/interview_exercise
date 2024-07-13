@@ -441,7 +441,8 @@ export class MessageLogic implements IMessageLogic {
   async like(
     likeMessageDto: LikeMessageDto,
     authenticatedUser: IAuthenticatedUser,
-  ) {
+  ){
+    
     await this.throwForbiddenErrorIfNotAuthorized(
       authenticatedUser,
       likeMessageDto.messageId,
